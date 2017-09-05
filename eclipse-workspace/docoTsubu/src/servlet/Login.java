@@ -14,25 +14,19 @@ import model.LoginLogic;
 import model.User;
 
 /**
- * Servlet implementation class Login
+
  */
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
-     * @see HttpServlet#HttpServlet()
+  
      */
-    public Login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+    
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
@@ -43,7 +37,7 @@ public class Login extends HttpServlet {
 		LoginLogic loginLogic = new LoginLogic();
 		boolean isLogin = loginLogic.execute(user);
 		//ログイン成功時の処理
-		if(isLogin ) {
+		if(isLogin) {
 		  //ユーザ情報をセッションスコープに保存
 		  HttpSession session = request.getSession();
 		  session.setAttribute("loginUser", user);
@@ -53,5 +47,4 @@ public class Login extends HttpServlet {
 		  request.getRequestDispatcher("/WEB-INF/loginResult.jsp");
 		dispatcher.forward(request, response);
 	}
-
 }

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="model.User" %>
+<%
+//セッションスコープに保存されたユーザ情報を取得
+User loginUser = (User) session.getAttribute("loginUser"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,11 +11,8 @@
 <title>どこつぶ</title>
 </head>
 <body>
-  <h1>どこつぶへようこそ</h1>
-  <form action="/docoTsubu/Login" method="post">
-  ユーザ名:<input type="text" name="name"><br>
-  パスワード:<input type="password" name="pass"><br>
-  <input type ="submit" value="ログイン">
-  </form>
+<h1>どこつぶメイン</h1>
+<p><%= loginUser.getName() %>さん、ログイン中</p>
+<a href = "/docoTsubu/Logout">ログアウト</a>
 </body>
 </html>
