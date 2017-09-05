@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.User" %>
+<%@ page import="model.User,model.Mutter,java.util.list" %>
 <%
 //セッションスコープに保存されたユーザ情報を取得
-User loginUser = (User) session.getAttribute("loginUser"); %>
+User loginUser = (User) session.getAttribute("loginUser"); 
+
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
