@@ -21,7 +21,7 @@ import model.User;
  */
 @WebServlet("/Main")
 public class Main extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUTD = 1L;	
        
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,7 +59,7 @@ public class Main extends HttpServlet {
 		//アプリケーションスコープに保存されたつぶやきリストを取得
 		ServletContext application = this.getServletContext();
 		List<Mutter> mutterList =
-	      (List<Mutter>) application.getAttribute("mutter");
+	      (List<Mutter>) application.getAttribute("mutterList");
 		//セッションスコープに保存された情報を取得
 		HttpSession session = request.getSession();
 		User loginUser = (User) session.getAttribute("loginUser");
@@ -69,6 +69,9 @@ public class Main extends HttpServlet {
 		postMutterLogic.execute(mutter, mutterList);
 		//アプリケーションスコープにつぶやきリストを保存
 		application.setAttribute("mutterList", mutterList);
+	  } else {
+		  //エラーメッセージをリクエストスコープに保存
+		  request.setAttribute("errorMsg", "つぶやきが入力されていません");
 	  }
 	  //メイン画面にフォワード
 	  RequestDispatcher dispatcher =
